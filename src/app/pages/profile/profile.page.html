@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>Perfil de Usuario</h2>
+        <h3>Nombre: {{ userData.nombre }} {{ userData.apellido }}</h3>
+        <p>Nivel de Educación: {{ userData.nivelEducacion }}</p>
+        <p>Fecha de Nacimiento: {{ userData.fechaNacimiento }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Desarrollado por Karen Fernandez</ion-title>
+  </ion-toolbar>
+</ion-footer>
+

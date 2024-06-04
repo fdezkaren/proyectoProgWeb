@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bienvenido!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>Usuario: {{ username }}</h2>
+        <div class="ion-text-center">
+          <h3>***Información***</h3>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input #nombreInput type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input #apellidoInput type="text" [(ngModel)]="apellido" name="apellido" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nivel Educacional</ion-label>
+          <ion-select [(ngModel)]="nivelEducacion">
+            <ion-select-option value="basica">Educación Básica</ion-select-option>
+            <ion-select-option value="media">Educación Media</ion-select-option>
+            <ion-select-option value="superior">Educación Superior</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Fecha de Nacimiento</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="fechaNacimiento"></ion-datetime>
+        </ion-item>
+
+        <ion-button expand="full" (click)="limpiar()">Limpiar</ion-button>
+        <ion-button expand="full" (click)="mostrar()">Mostrar</ion-button>
+        <ion-button expand="full" (click)="guardar()">Guardar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Desarrollado por Karen Fernandez</ion-title>
+  </ion-toolbar>
+</ion-footer>
