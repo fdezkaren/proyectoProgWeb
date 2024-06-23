@@ -1,6 +1,21 @@
+
 <ion-header>
+  <ion-segment (ionChange)="segmentChanged($event)" [scrollable]="true" value="heart">
+    <ion-segment-button value="home">
+      <ion-icon name="home"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="person">
+      <ion-icon name="person"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="briefcase">
+      <ion-icon name="briefcase"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="ribbon">
+      <ion-icon name="ribbon"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
   <ion-toolbar>
-    <ion-title>Bienvenido!</ion-title>
+    <ion-title>Bienvenid&#64; {{ username }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +23,6 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h2>Usuario: {{ username }}</h2>
         <div class="ion-text-center">
           <h3>***Información***</h3>
         </div>
