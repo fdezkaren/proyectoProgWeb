@@ -1,3 +1,46 @@
-<p>
-  experiencia-laboral works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Experiencia Laboral</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let experiencia of experiencias; let i = index">
+      <ion-label>Experiencia {{ i + 1 }}</ion-label>
+      <ion-button slot="end" color="danger" (click)="eliminarExperiencia(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" color="primary" (click)="actualizarExperiencia(i, experiencia)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Empresa</ion-label>
+      <ion-input type="text" [(ngModel)]="empresa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Año inicio</ion-label>
+      <ion-input type="text" [(ngModel)]="anoInicio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Trabajas actualmente aquí?</ion-label>
+      <ion-checkbox [(ngModel)]="trabajoActualmente"></ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="!trabajoActualmente">
+      <ion-label>Año término</ion-label>
+      <ion-input type="text" [(ngModel)]="anoTermino"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cargo</ion-label>
+      <ion-input type="text" [(ngModel)]="cargo"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="guardar()">Agregar Experiencia</ion-button>
+  </ion-list>
+</ion-content>

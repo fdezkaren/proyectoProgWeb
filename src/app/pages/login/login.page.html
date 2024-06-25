@@ -1,3 +1,4 @@
+<!-- login.page.html -->
 <ion-header>
   <ion-toolbar>
     <ion-title>FichAPP</ion-title>
@@ -9,19 +10,26 @@
     <h2>FichAPP</h2>
     <h3>Bienvenido!</h3>
 
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="username" minlength="3" maxlength="8" pattern="[a-zA-Z0-9]*"></ion-input>
-    </ion-item>
+    <ng-container *ngIf="!isLoggedIn(); else loggedInTemplate">
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="username" minlength="3" maxlength="8" pattern="[a-zA-Z0-9]*"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password" maxlength="4" pattern="\d*"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" maxlength="4" pattern="\d*"></ion-input>
+      </ion-item>
 
-    <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+      <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+    </ng-container>
 
-    <ion-text>
+    <ng-template #loggedInTemplate>
+      <p>Bienvenido, {{ getCurrentUser() }}</p>
+      <ion-button expand="full" (click)="logout()">Cerrar sesión</ion-button>
+    </ng-template>
+
+    <ion-text *ngIf="!isLoggedIn()">
       <a [routerLink]="['/register']">Crea tu cuenta</a>
     </ion-text>
   </div>

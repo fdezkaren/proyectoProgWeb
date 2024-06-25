@@ -1,3 +1,51 @@
-<p>
-  certificaciones works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>>Certificaciones<</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let certificacion of certificaciones; let i = index">
+      <ion-label>Certificación {{ i + 1 }}</ion-label>
+      <ion-button slot="end" color="danger" (click)="eliminarCertificacion(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre Certificado</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="nuevaCertificacion.nombre"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha de Obtención</ion-label>
+      <ion-input
+        type="date"
+        [(ngModel)]="nuevaCertificacion.fechaObtencion"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Certificado tiene vencimiento?</ion-label>
+      <ion-checkbox
+        [(ngModel)]="nuevaCertificacion.tieneVencimiento"
+      ></ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="nuevaCertificacion.tieneVencimiento">
+      <ion-label position="stacked">Fecha de Vencimiento</ion-label>
+      <ion-input
+        type="date"
+        [(ngModel)]="nuevaCertificacion.fechaVencimiento"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="agregarCertificacion()"
+      >Agregar Certificación</ion-button
+    >
+  </ion-list>
+</ion-content>

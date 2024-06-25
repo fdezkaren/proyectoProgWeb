@@ -1,3 +1,57 @@
-<p>
-  mis-datos works!
-</p>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center">
+          <h3>Añadir Alumno</h3>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input #nombreInput type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input #apellidoInput type="text" [(ngModel)]="apellido" name="apellido" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nivel Educacional</ion-label>
+          <ion-select [(ngModel)]="nivelEducacion">
+            <ion-select-option value="basica">Educación Básica</ion-select-option>
+            <ion-select-option value="media">Educación Media</ion-select-option>
+            <ion-select-option value="superior">Educación Superior</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Fecha de Nacimiento</ion-label>
+          <ion-input type="date" [(ngModel)]="fechaNacimiento"></ion-input>
+        </ion-item>
+
+          <ion-button (click)="takePicture()">Tomar Foto</ion-button>
+          <img *ngIf="photo" [src]="photo" />
+                
+
+        <ion-button expand="full" (click)="limpiar()">Limpiar</ion-button>
+        <ion-button expand="full" (click)="mostrar()">Mostrar</ion-button>
+        <ion-button expand="full" (click)="guardar()">Guardar</ion-button>
+
+        <ion-list>
+          <ion-item *ngFor="let alumno of alumnos" (click)="seleccionarAlumno(alumno)">
+            <ion-label>
+              {{alumno.nombre}} {{alumno.apellido}} - {{alumno.nivel_educacional}}
+            </ion-label>
+            <ion-button slot="end" color="danger" (click)="eliminarAlumno(alumno.id); $event.stopPropagation();">Eliminar</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Desarrollado por Karen Fernandez</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -18,7 +18,6 @@ import { HomePage } from './home.page';
   declarations: [HomePage]
 })
 export class HomePageModule {
-  segmentChanged(ev: any){
-    console.log('Segmento cambiado', ev);
-  }
+
+
 }
